@@ -6,6 +6,9 @@ authors = [
     "Tabre Perez <tabre@tabre.com>"
 ]
 description="Provides tools for working with Intel Hex files"
+repository="https://github.com/tabre/intelhex"
+license="MIT"
+keyword=["intel", "hex"]
 
 [lib]
 name = "intelhex"
