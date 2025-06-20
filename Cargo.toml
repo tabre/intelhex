@@ -1,0 +1,17 @@
+[package]
+name = "intelhex"
+version = "0.1.0"
+edition = "2024"
+authors = [
+    "Tabre Perez <tabre@tabre.com>"
+]
+description="Provides tools for working with Intel Hex files"
+
+[lib]
+name = "intelhex"
+path = "src/lib/intelhex.rs"
+
+[dependencies]
+bytes = "1.10.1"
+hex = "0.4.3"
+serde = { version = "1.0.219", features = [ "derive" ] }
