@@ -121,14 +121,14 @@ impl Record {
             }.iter().sum()
         };
 
-        if !record.verify() {
-            let checksum = record.calculate_checksum();
-            return Err(IHexError::RecordBadChecksum.new(&format!(
+        let checksum = record.calculate_checksum();
+        match checksum == record.checksum {
+            true => Ok(Some(record)),
+            false => Err(IHexError::RecordBadChecksum.new(&format!(
                 "Bad checksum: 0x{:X}, calculated: 0x{:X} ({})",
                 record.checksum, checksum, checksum
-            )));
+            )))
         }
-        Ok(Some(record))
     }
     
     pub fn binary_size(&self) -> usize {
@@ -167,10 +167,6 @@ impl Record {
         )
     }
 
-    pub fn verify(&self) -> bool {
-        let checksum = self.calculate_checksum();
-        checksum == self.checksum
-    }
 }
 
 #[allow(unused)]
